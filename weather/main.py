@@ -10,7 +10,8 @@ ___categories___   = ["Homescreens"]
 ___bootstrapped___ = True # Whether or not apps get downloaded on first install. Defaults to "False", mostly likely you won't have to use this at all.
 
 
-import ugfx_helper, ugfx
+import ugfx_helper, ugfx, app
+from tilda import Buttons
 # import weather
 
 
@@ -19,7 +20,9 @@ ugfx.clear(ugfx.BLACK)
 
 ugfx.text(5, 5, "Hi Alan!", ugfx.WHITE)
 
-while Buttons.is_pressed(Buttons.BTN_Menu):
+Buttons.enable_interrupt(Buttons.BTN_B, lambda button_id: app.restart_to_default(), on_press=True, on_release=False)
+
+while True:
     sleep.wfi()
 
 ugfx.clear()
